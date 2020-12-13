@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Api\Client;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ResetPassword;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
@@ -58,22 +60,57 @@ class AuthController extends Controller
     }
     public function resetPassword(Request $request)
     {
-        $validation = validator()->make($request->all(),[
+        $validation = validator()->make($request->all(), [
             'phone' => 'required'
+        ]);
+        if ($validation->fails()) {
+            return responseJson(0, 'validation error', $validation->errors()->all());
+        }
+        $client = Client::where('phone', $request->phone)->first();
+        if ($client) {
+            $code = rand(111111, 111111);
+            $update = $client->update(['pin_code' => $code]);
+            if ($update) {
+                Mail::to($client->email)
+                    ->bcc('ahmed.ismail11199@gmail.com')
+                    ->send(new ResetPassword($code));
+
+                return responseJson(1, 'check ur phone',
+                    [
+                        'pin_code_for_test' => $code,
+                        'mail_fails' => Mail::failures()
+                    ]);
+            }else{
+                return responseJson('0', 'try again');
+            }
+        }else{
+            return responseJson('0', 'wrong phone number please try again');
+        }
+    }
+    public function newPassword(Request $request)
+    {
+        $validation = validator()->make($request->all(),[
+            'pin_code' => 'required',
+            'password' => 'required|confirmed'
         ]);
         if ($validation->fails()){
             return responseJson(0,'validation error',$validation->errors()->all());
         }
-        $client = Client::where('phone',$request->phone)->first();
-        if ($client){
-            $code = rand(111111,111111);
-            $update = $client->update(['pin_code' => $code]);
-            if ($update){
-
+        $user = Client::where('pin_code',$request->pin_code)->first();
+        if ($user)
+        {
+            $user->password = $request->password;
+            $user->pin_code = null;
+            if($user->save())
+            {
+                return responseJson(1,'password changed successfully');
+            }else{
+                return responseJson(0 , 'please try again');
             }
         }else{
-            return responseJson(0,'phone not found',$validation->errors()->all());
+            return responseJson(0 , 'pin code error ');
         }
+
     }
     public function editProfile(Request $request)
     {

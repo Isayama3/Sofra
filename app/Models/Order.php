@@ -9,7 +9,7 @@ class Order extends Model
 
     protected $table = 'orders';
     public $timestamps = true;
-    protected $fillable = array('address', 'num_of_orders', 'delivery_cost', 'total', 'commission', 'payment_method', 'special_note', 'status', 'restaurant_id', 'client_id');
+    protected $fillable = array('address', 'net','cost', 'delivery_cost', 'total', 'commission', 'payment_method', 'special_note', 'status', 'restaurant_id', 'client_id');
 
     public function clients()
     {
@@ -17,7 +17,7 @@ class Order extends Model
     }
     public function products()
     {
-        return $this->belongsToMany('App\Models\Product');
+        return $this->belongsToMany('App\Models\Product')->withPivot('price','quantity','note');
     }
     public function restaurant()
     {

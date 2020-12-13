@@ -10,10 +10,12 @@ class CreatePaymentTable extends Migration {
 		Schema::create('payment', function(Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
-			$table->decimal('rest_of_money', 8,2);
-			$table->text('notes');
-			$table->date('date');
-			$table->decimal('money', 8,2);
+            $table->integer('restaurant_sales');
+            $table->integer('app_commission');
+            $table->decimal('rest_of_money', 8,2)->nullable();
+            $table->integer('paid_money')->nullable();
+			$table->text('notes')->nullable();
+			$table->date('date')->nullable();
 			$table->integer('restaurant_id')->unsigned();
 		});
 	}

@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\Restaurant;
 use App\Models\Review;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -129,5 +130,15 @@ class MainController extends Controller
         $reviews = $request->user('restaurant')->reviews()->paginate(5);
         return responseJson('1' , 'success',$reviews);
     }
-    public function 
+    public function commission(Request $request)
+    {
+        $restaurant_sales = Order::where('restaurant_id',$request->user('restaurant')->id)->sum('total');
+        $app_commision = $restaurant_sales * (Setting::pluck('app_commission')->first()) / 100 ;
+        $payment = $request->user('restaurant')->payment()->create([
+            'restaurant_sales' => $restaurant_sales,
+            'app_commission' => $app_commision
+        ]);
+        return responseJson('1','success',$payment);
+
+    }
 }

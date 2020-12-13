@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="889b9224-3202-457d-b4b5-06b9c37a5786" name="Default Changelist" comment="" />
+    <list default="true" id="889b9224-3202-457d-b4b5-06b9c37a5786" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Client/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Client/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Client/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Client/MainController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Restaurant/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Restaurant/MainController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/ResetPassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/ResetPassword.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Payment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_02_194123_create_order_product_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_02_194123_create_order_product_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_02_194123_create_orders_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_02_194123_create_orders_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_02_194123_create_payment_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_02_194123_create_payment_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/emails/auth/resetPassword.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/auth/resetPassword.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,6 +23,9 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -112,6 +128,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1l6uFKOhhLH8yhEk8M3OVv4DmHD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -155,6 +172,7 @@
       <workItem from="1606931690776" duration="14020000" />
       <workItem from="1607023594135" duration="707000" />
       <workItem from="1607718636229" duration="21170000" />
+      <workItem from="1607880855348" duration="10282000" />
     </task>
     <servers />
   </component>
@@ -162,6 +180,10 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="654" y="280" key="#Notifications" timestamp="1607896734487">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="654" y="280" key="#Notifications/0.0.1536.834/1920.0.1360.738@0.0.1536.834" timestamp="1607896734487" />
     <state x="475" y="60" key="#PHP" timestamp="1607794788786">
       <screen x="0" y="0" width="1536" height="834" />
     </state>

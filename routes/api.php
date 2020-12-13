@@ -20,7 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['prefix'=>'client','namespace'=>'Api\Client'],function(){
     Route::post('register','AuthController@register');
     Route::post('login','AuthController@login');
-    Route::get('reset-password','AuthController@resetPassword');
+    Route::post('reset-password','AuthController@resetPassword');
+    Route::post('new-password','AuthController@newPassword');
     Route::post('edit-profile','AuthController@editProfile');
     Route::get('create-review','MainController@createReview');
     Route::get('make-order','MainController@makeOrder');
@@ -47,7 +48,7 @@ Route::group(['prefix'=>'restaurant','namespace'=>'Api\Restaurant'],function(){
     Route::get('edit-offer','MainController@editOffer');
     Route::get('delete-offer','MainController@deleteOffer');
     Route::get('reviews','MainController@reviews');
-
+    Route::get('commission','MainController@commission');
 
 });
 Route::group(['prefix'=>'main','namespace'=>'Api'],function(){
@@ -60,4 +61,5 @@ Route::group(['prefix'=>'main','namespace'=>'Api'],function(){
     Route::get('about-app','MainController@aboutApp');
     Route::get('contact-us','MainController@contactUs');
     Route::get('settings','MainController@settings');
+
 });

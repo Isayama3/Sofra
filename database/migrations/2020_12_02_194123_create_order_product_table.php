@@ -14,6 +14,7 @@ class CreateOrderProductTable extends Migration {
 			$table->integer('product_id')->unsigned();
 			$table->double('price', 8,2);
 			$table->smallInteger('quantity');
+			$table->text('note')->nullable();
 		});
 	}
 
