@@ -39,7 +39,7 @@ class Restaurant extends Model
         return $this->hasMany('App\Models\Review');
     }
 
-    public function city()
+    public function district()
     {
         return $this->belongsTo('App\Models\District');
     }

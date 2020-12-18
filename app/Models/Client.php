@@ -24,7 +24,7 @@ class Client extends Model
     {
         return $this->hasMany('App\Models\Order');
     }
-    public function districts()
+    public function district()
     {
         return $this->belongsTo('App\Models\District');
     }

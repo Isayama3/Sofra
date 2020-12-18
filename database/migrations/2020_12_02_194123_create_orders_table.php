@@ -11,11 +11,11 @@ class CreateOrdersTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->string('address', 255);
-            $table->decimal('cost', 8,2)->nullable();
-            $table->decimal('delivery_cost', 8,2)->nullable();
-			$table->decimal('total', 8,2)->nullable();
-			$table->decimal('commission', 8,2)->nullable();
-			$table->decimal('net', 8,2)->nullable();
+            $table->double('cost', 8,2)->nullable();
+            $table->double('delivery_cost', 8,2)->nullable();
+			$table->double('total', 8,2)->nullable();
+			$table->double('commission', 8,2)->nullable();
+			$table->double('net', 8,2)->nullable();
 			$table->enum('payment_method', array('cash', 'online'))->nullable();
 			$table->enum('status', ['pending','processing','completed','decline','received','delivered'])->default('pending');
 			$table->integer('restaurant_id')->unsigned()->nullable();

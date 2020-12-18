@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class District extends Model 
+class District extends Model
 {
 
     protected $table = 'districts';
     public $timestamps = true;
     protected $fillable = array('name', 'city_id');
 
-    public function governrorates()
+    public function City()
     {
         return $this->belongsTo('App\Models\City');
     }

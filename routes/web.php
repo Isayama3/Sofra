@@ -16,5 +16,23 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::group(['middleware'=>'auth:web'],function()
+{
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('categories','CategoriesController');
+    Route::resource('cities','CitiesController');
+    Route::resource('clients','ClientsController');
+    Route::resource('contacts','ContactsController');
+    Route::resource('districts','DistrictsController');
+    Route::resource('offers','OffersController');
+    Route::resource('orders','OrdersController');
+    Route::resource('payment-methods','PaymentMethodsController');
+    Route::resource('payments','PaymentsController');
+    Route::resource('restaurants','RestaurantsController');
+    Route::resource('restaurants-payments','RestaurantsPaymentsController');
+    Route::resource('settings','SettingsController');
+    Route::resource('users','UsersController');
+    Route::resource('roles','RolesController');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+

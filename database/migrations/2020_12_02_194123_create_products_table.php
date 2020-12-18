@@ -11,8 +11,8 @@ class CreateProductsTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->string('name', 255);
-			$table->decimal('price', 8,2);
-			$table->decimal('offer_price', 8,2)->nullable();
+			$table->double('price', 8,2);
+			$table->double('offer_price', 8,2)->nullable();
 			$table->integer('time');
 			$table->text('description');
 			$table->string('pic', 255)->nullable();

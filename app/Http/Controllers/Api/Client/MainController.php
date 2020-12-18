@@ -73,7 +73,7 @@ class MainController extends Controller
 //            if($update)
 //            {
 //                // notification
-//                $notification = $restaurant->notifications()->create([
+//                $notification = $restaurant->restaurantable()->saveMany([
 //                    'title' => 'new order',
 //                    'content' => 'you have new order from ',
 //                    'order_id' => $order->id

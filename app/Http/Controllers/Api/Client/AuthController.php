@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Client;
 use App\Http\Controllers\Controller;
 use App\Mail\ResetPassword;
 use App\Models\Client;
+use App\Models\Token;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -129,4 +130,30 @@ class AuthController extends Controller
             'user' => $login_user
         ]);
     }
+    public function registerToken(Request $request)
+    {
+        $validation = validator()->make($request->all(),[
+            'token' => 'required',
+            'platform' => 'required|in:android,ios'
+        ]);
+        if($validation->fails()){
+            return responseJson(0 , $validation->errors()->first());
+        }
+        Token::where('token',$request->token)->delete();
+        $request->user('client')->tokens()->create($request->all());
+        return responseJson(1 , 'success');
+    }
+
+    public function removeToken(Request $request)
+    {
+        $validation = validator()->make($request->all(),[
+            'token' => 'required'
+        ]);
+        if($validation->fails()){
+            return responseJson(0 , $validation->errors()->first());
+        }
+        Token::where('token',$request->token)->delete();
+        return responseJson(1 , 'success');
+    }
+
 }

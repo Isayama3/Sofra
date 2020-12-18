@@ -15,13 +15,14 @@ class CreateRestaurantsTable extends Migration {
 			$table->string('phone', 255);
 			$table->integer('district_id')->unsigned();
 			$table->string('password', 255);
-			$table->decimal('min_price', 8,2);
-			$table->decimal('max_price', 8,2);
-			$table->decimal('delivery_cost', 8,2);
+			$table->double('min_price', 8,2);
+			$table->double('max_price', 8,2);
+			$table->double('delivery_cost', 8,2);
 			$table->string('whatsapp', 255);
 			$table->string('restaurant_phone');
             $table->enum('status', array('open', 'close'));
-			$table->string('pin_code')->nullable();
+            $table->boolean('activation')->default('0');
+            $table->string('pin_code')->nullable();
 			$table->string('remember_token')->nullable();
 			$table->string('api_token', 255)->nullable();
 		});

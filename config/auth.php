@@ -49,7 +49,7 @@ return [
             'driver' => 'token',
             'provider' => 'restaurants',
             'hash' => false,
-        ],
+        ]
     ],
 
     /*

@@ -23,6 +23,8 @@ Route::group(['prefix'=>'client','namespace'=>'Api\Client'],function(){
     Route::post('reset-password','AuthController@resetPassword');
     Route::post('new-password','AuthController@newPassword');
     Route::post('edit-profile','AuthController@editProfile');
+    Route::post('register-token','AuthController@registerToken');
+    Route::post('remove-token','AuthController@removeToken');
     Route::get('create-review','MainController@createReview');
     Route::get('make-order','MainController@makeOrder');
     Route::get('current-orders','MainController@currentOrders');

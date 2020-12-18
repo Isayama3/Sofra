@@ -12,7 +12,7 @@ class CreatePaymentTable extends Migration {
 			$table->timestamps();
             $table->integer('restaurant_sales');
             $table->integer('app_commission');
-            $table->decimal('rest_of_money', 8,2)->nullable();
+            $table->double('rest_of_money', 8,2)->nullable();
             $table->integer('paid_money')->nullable();
 			$table->text('notes')->nullable();
 			$table->date('date')->nullable();
