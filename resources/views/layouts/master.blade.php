@@ -97,11 +97,17 @@
                             <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                            <i class="fas fa-expand-arrows-alt"></i>
-                        </a>
-                    </li>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @if(Illuminate\Support\Facades\Auth::check())
+                            {{auth()->user()->name}}
+                            @endif</span>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{url(route('profile',auth()->user()->id))}}">Profile</a>
+                            <a class="dropdown-item" href="{{url(route('logout'))}}">Sign out</a>
+                        </div>
+                    </div>
                 </ul>
             </nav>
             <!-- /.navbar -->
@@ -116,16 +122,6 @@
 
                 <!-- Sidebar -->
                 <div class="sidebar">
-                    <!-- Sidebar user panel (optional) -->
-                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                        <div class="image">
-                            <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                        </div>
-                        <div class="info">
-                            <a href="#" class="d-block">{{\Illuminate\Support\Facades\Auth::user()->name}}</a>
-                        </div>
-                    </div>
-
                     <!-- Sidebar Menu -->
                     <nav class="mt-2">
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">

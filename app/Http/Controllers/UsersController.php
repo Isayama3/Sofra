@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
@@ -25,7 +26,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -36,7 +37,18 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'name' =>'required',
+            'email' =>'required|unique:users',
+            'password' =>'required|confirmed|min:8',
+            'password_confirmation'=>'required',
+            'roles_list' => 'required'
+        ];
+        $this->validate($request,$rules);
+        $record = User::create($request->except('roles_list'));
+        $record->roles()->attach($request->input('roles_list'));
+        flash()->success('Added');
+        return redirect(route('users.index'));
     }
 
     /**
@@ -58,7 +70,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $model = User::findorfail($id);
+        return view('users.edit',compact('model'));
     }
 
     /**
@@ -70,7 +83,21 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'name' =>'required',
+            'email' => Rule::unique('users')->ignore($id),
+            'password' =>'required|confirmed|min:8',
+            'password_confirmation'=>'required',
+            'roles_list' => 'required'
+        ];
+        $this->validate($request,$rules);
+        $user = User::findOrFail($id);
+        $user->roles()->sync($request->input('roles_list'));
+        $request->merge(['password'=>bcrypt($request->password)]);
+        $record = User::findorfail($id);
+        $record->update($request->all());
+        flash()->success('Updated');
+        return redirect(route('users.index'));
     }
 
     /**
@@ -81,6 +108,9 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $record = User::findorfail($id);
+        $record->delete();
+        flash()->error("deleted");
+        return redirect(route('users.index'));
     }
 }

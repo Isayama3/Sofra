@@ -1,17 +1,19 @@
 @extends('layouts.master')
-@inject('model', 'App\User')
 @inject('role', 'Spatie\Permission\Models\Role')
-
-@section('page_title')
-    New User
-@endsection
 <?php
 $roles = $role->pluck('name','id')->toArray();
 ?>
+@section('page_title')
+    Edit User
+@endsection
 @section('content')
 
+
+
             {!! Form::model($model,[
-               'action'=> 'UsersController@store'
+               'action'=> ['UsersController@update',$model->id],
+               'method' => 'put',
+               'enctype'=>'multipart/form-data'
             ]) !!}
             <div class="form-group">
                 <label for="title">Name</label>
@@ -30,16 +32,20 @@ $roles = $role->pluck('name','id')->toArray();
                     'class' =>'form-control'
                 ]) !!}
                 <label for="roles_list">Roles</label>
-                {!! Form::select('roles_list[]',$roles, null ,[
-                    'class' =>'form-control',
-                    'multiple' => 'multiple'
+                <div class="select2-purple">
+                    {!! Form::select('roles_list[]',$roles, null ,[
+                    'class' =>'form-control select2-purple js-example-basic-multiple',
+                    'multiple' => 'multiple',
+                    'data-dropdown-css-class'=>'select2-purple',
+                    'data-placeholder'=>'Select Roles'
                 ]) !!}
+                </div>
+
             </div>
             <div class="form-group">
-                {!! Form::submit('Add', [
+                {!! Form::submit('Update', [
                     'class' => 'btn btn-primary'
                 ]) !!}
             </div>
             {!! Form::close() !!}
-
 @endsection

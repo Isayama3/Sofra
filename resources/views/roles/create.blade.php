@@ -43,3 +43,11 @@
     </div>
     {!! Form::close() !!}
 @endsection
+@push('scripts')
+    <script>
+        $("#select-all").click(function(){
+            $("input[type=checkbox]").prop('checked',$(this).prop('checked'));
+        });
+    </script>
+
+@endpush

@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::group(['middleware'=>'auth:web'],function()
+Route::group(['middleware'=>['auth:web','check-permission']],function()
 {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('categories','CategoriesController');
@@ -33,6 +33,10 @@ Route::group(['middleware'=>'auth:web'],function()
     Route::resource('settings','SettingsController');
     Route::resource('users','UsersController');
     Route::resource('roles','RolesController');
+    Route::get('profile/{id}','ProfileController@edit')->name('profile');
+    Route::post('profile/{id}','ProfileController@update')->name('profileUpdate');
+    Route::get('logout','HomeController@logout');
+
 });
 
 
