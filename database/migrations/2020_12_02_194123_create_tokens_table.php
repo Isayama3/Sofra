@@ -13,7 +13,7 @@ class CreateTokensTable extends Migration {
 			$table->string('token', 255);
 			$table->enum('type', array('android', 'ios'));
 			$table->integer('tokenable_id')->unsigned();
-			$table->enum('tokenable_type', array('client', 'restaurant'));
+			$table->string('tokenable_type',255);
 		});
 	}
 

@@ -70,15 +70,15 @@ class MainController extends Controller
                 'commission' => $commission,
                 'net' => $net
             ]);
-//            if($update)
-//            {
-//                // notification
-//                $notification = $restaurant->restaurantable()->saveMany([
-//                    'title' => 'new order',
-//                    'content' => 'you have new order from ',
-//                    'order_id' => $order->id
-//                ]);
-//            }
+            if($update)
+            {
+                // notification
+                $notification = $restaurant->notifications()->create([
+                    'title' => 'new order',
+                    'content' => 'you have new order from ',
+                    'order_id' => $order->id,
+                ]);
+            }
             $data = ['order'=> $order->fresh()->load('products')]; //load() خاصة بال relation
             return responseJson('1','success',$data);
         }else{

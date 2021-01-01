@@ -13,7 +13,7 @@ class CreateNotificationsTable extends Migration {
 			$table->string('title', 255);
 			$table->string('content', 255);
 			$table->integer('notifiable_id')->unsigned();
-			$table->enum('notifiable_type', array('client', 'restaurant'));
+			$table->string('notifiable_type',255);
 		});
 	}
 

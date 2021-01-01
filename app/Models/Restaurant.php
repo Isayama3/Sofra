@@ -51,12 +51,12 @@ class Restaurant extends Model
 
     public function notifications()
     {
-        return $this->morphedByMany('App\Models\Notification', 'restaurantable');
+        return $this->morphMany('App\Models\Notification', 'notifiable');
     }
 
     public function tokens()
     {
-        return $this->morphedByMany('App\Models\Token', 'restaurantable');
+        return $this->morphMany('App\Models\Token', 'tokenable');
     }
 
 }

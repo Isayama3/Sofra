@@ -31,12 +31,12 @@ class Client extends Model
 
     public function notifications()
     {
-        return $this->morphedByMany('App\Models\Notification', 'clientable');
+        return $this->morphMany('App\Models\Notification', 'notifiable');
     }
 
     public function tokens()
     {
-        return $this->morphedByMany('App\Models\Token', 'clientable');
+        return $this->morphMany('App\Models\Token', 'tokenable');
     }
 
 }
