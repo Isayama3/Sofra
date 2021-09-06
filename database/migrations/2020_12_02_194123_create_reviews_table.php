@@ -14,7 +14,8 @@ class CreateReviewsTable extends Migration {
 			$table->tinyInteger('rating');
 			$table->integer('client_id')->unsigned();
 			$table->integer('restaurant_id')->unsigned();
-		});
+            $table->softDeletes();
+        });
 	}
 
 	public function down()

@@ -9,11 +9,15 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5|^8.0",
+        "carlos-meneses/laravel-mpdf": "^2.1",
         "fideloper/proxy": "^4.4",
+        "guzzlehttp/guzzle": "^7.0",
         "laracasts/flash": "^3.2",
         "laravel/framework": "^6.20",
         "laravel/tinker": "^2.5",
         "laravelcollective/html": "^6.2",
+        "maatwebsite/excel": "^3.1",
+        "mpdf/mpdf": "^8.0",
         "spatie/laravel-permission": "^3.18"
     },
     "require-dev": {
@@ -43,7 +47,8 @@
             "database/factories"
         ],
         "files": [
-            "app/Ahmed/helpers.php"
+            "app/Ahmed/helpers.php",
+            "app/Ahmed/CookiesHelper.php"
         ]
     },
     "autoload-dev": {

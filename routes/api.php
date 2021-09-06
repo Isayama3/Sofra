@@ -26,7 +26,7 @@ Route::group(['prefix'=>'client','namespace'=>'Api\Client'],function(){
     Route::post('register-token','AuthController@registerToken');
     Route::post('remove-token','AuthController@removeToken');
     Route::get('create-review','MainController@createReview');
-    Route::get('make-order','MainController@makeOrder');
+    Route::post('make-order','MainController@makeOrder');
     Route::get('current-orders','MainController@currentOrders');
     Route::get('previous-orders','MainController@previousOrders');
     Route::get('receive-order','MainController@receiveOrder');

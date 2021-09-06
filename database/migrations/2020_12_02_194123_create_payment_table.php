@@ -17,7 +17,8 @@ class CreatePaymentTable extends Migration {
 			$table->text('notes')->nullable();
 			$table->date('date')->nullable();
 			$table->integer('restaurant_id')->unsigned();
-		});
+            $table->softDeletes();
+        });
 	}
 
 	public function down()

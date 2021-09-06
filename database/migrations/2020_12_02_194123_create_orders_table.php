@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration {
 			$table->enum('status', ['pending','processing','completed','decline','received','delivered'])->default('pending');
 			$table->integer('restaurant_id')->unsigned()->nullable();
 			$table->integer('client_id')->unsigned();
+			$table->softDeletes();
 		});
 	}
 

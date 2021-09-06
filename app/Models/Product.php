@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Product extends Model
 {
-
     protected $table = 'products';
     public $timestamps = true;
     protected $fillable = array('name', 'price', 'offer_price', 'time', 'description', 'restaurant_id','category_id');
@@ -25,4 +25,9 @@ class Product extends Model
         return $this->belongsTo('App\Models\Category');
     }
 
+    public function getProducts()
+    {
+        $records =DB::table('products')->select('name', 'price', 'offer_price', 'time', 'description', 'pic', 'category_id', 'restaurant_id')->get()->toArray();
+        return $records;
+    }
 }

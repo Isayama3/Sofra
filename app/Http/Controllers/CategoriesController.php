@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -12,10 +13,10 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $records = Category::paginate(20);
-        return view('categories.index',compact('records'));
+        $records = Category::paginate(5);
+        return view('categories.index', compact('records'));
     }
 
     /**
@@ -42,7 +43,7 @@ class CategoriesController extends Controller
         $message = [
             'name.required' => 'Name is required'
         ];
-        $this->validate($request,$rules,$message);
+        $this->validate($request, $rules, $message);
         Category::create($request->all());
         flash()->success('Added');
         return redirect(route('categories.index'));
@@ -68,7 +69,7 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         $model = Category::findOrFail($id);
-        return view('categories.edit',compact('model'));
+        return view('categories.edit', compact('model'));
     }
 
     /**
@@ -81,14 +82,23 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'name' =>'required'
+            'name' =>['required',
+                function($attribute,$val,$fail){
+                    $attribute = 'name';
+                    if ($val == 'elbadry') {
+                        $fail($attribute. 'is invalid') ;
+                    }
+                },
+            ]
         ];
         $messages = [
             'name.required' => 'Name is required'
         ];
-        $this->validate($request,$rules,$messages);
+        $this->validate($request, $rules, $messages);
         $city = Category::findOrFail($id);
-        $city->update($request->all());
+        $new_record = $city->update($request->all());
+        $new_record->touch();
+        $new_record->save();
         flash()->success('Updated');
         return redirect(route('categories.index'));
     }

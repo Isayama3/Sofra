@@ -19,7 +19,8 @@ class CreateClientsTable extends Migration {
 			$table->string('pin_code', 255)->nullable();
 			$table->string('remember_token', 255)->nullable();
 			$table->string('api_token', 255)->nullable();
-		});
+            $table->softDeletes();
+        });
 	}
 
 	public function down()

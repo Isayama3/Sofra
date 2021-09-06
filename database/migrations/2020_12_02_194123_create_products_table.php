@@ -18,7 +18,8 @@ class CreateProductsTable extends Migration {
 			$table->string('pic', 255)->nullable();
 			$table->integer('category_id')->unsigned();
 			$table->integer('restaurant_id')->unsigned();
-		});
+            $table->softDeletes();
+        });
 	}
 
 	public function down()
